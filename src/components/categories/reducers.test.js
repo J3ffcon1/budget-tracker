@@ -1,4 +1,5 @@
 import { categories, CATEGORIES_LOAD, CATEGORY_ADD, CATEGORY_REMOVE, CATEGORY_UPDATE, expensesByCategory, EXPENSE_ADD, getExpensesByCategory } from './reducers';
+
 it('has a default value of empty array', () => {
   const state = categories(undefined, {});
   expect(state).toEqual([]);
