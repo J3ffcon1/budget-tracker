@@ -15,9 +15,9 @@ export default class Category extends Component {
 
       return (
         <li key={name}>
-          {name}: &nbsp;
-          {budget}
-          <button onClick={() => onRemove(category)}>x</button>
+          Category: {name} &nbsp;
+          Budget: {budget} &nbsp;
+          <button onClick={() => onRemove(category)}>Delete Item</button>
         </li>
       );
     }

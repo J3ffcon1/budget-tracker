@@ -54,45 +54,45 @@ describe(' expensesByCategory reducer', () => {
   });
 
   it('adds an entry on category add', () => {
-    const state = expensesByCategory({}, { type: CATEGORY_ADD, payload: { id: 123 } });
-    expect(state).toEqual({ 123: [] });
+    const state = expensesByCategory({}, { type: CATEGORY_ADD, payload: { id: 1 } });
+    expect(state).toEqual({ 1: [] });
   });
 
   it('removes an expense on Category remove', () => {
-    const state = expensesByCategory({ 123: [], 456: [] }, { type: CATEGORY_REMOVE, payload: { id: 123 } });
-    expect(state).toEqual({ 456: [] });
+    const state = expensesByCategory({ 1: [], 4: [] }, { type: CATEGORY_REMOVE, payload: { id: 1 } });
+    expect(state).toEqual({ 4: [] });
   });
 
   it('creates expenses for all loaded categories', () => {
     const state = expensesByCategory({}, { 
       type: CATEGORIES_LOAD, 
       payload: [{ 
-        id: 123, 
+        id: 1, 
         expenses: [
           { text: 'one' }, 
           { text: 'two' }
         ] 
       }, {
-        id: 456,
+        id: 4,
         expenses: []
       }] 
     });
     expect(state).toEqual({ 
-      123: [{ text: 'one' }, { text: 'two' }],
-      456: []
+      1: [{ text: 'one' }, { text: 'two' }],
+      4: []
     });
   });
 
   it('adds a expense to a category', () => {
-    const state = expensesByCategory({ 123: [{ text: 'one' }] }, {
+    const state = expensesByCategory({ 1: [{ text: 'one' }] }, {
       type: EXPENSE_ADD,
       payload: {
-        categoryId: 123,
+        categoryId: 1,
         expense: { text: 'two' }
       }
     });
 
-    expect(state).toEqual({ 123: [{ text: 'one' }, { text: 'two' }] });
+    expect(state).toEqual({ 1: [{ text: 'one' }, { text: 'two' }] });
   });
 
   // it('updates an expense on a category', () => {
@@ -107,10 +107,10 @@ describe('selectors', () => {
     const expenses = [{ text: 'one' }];
     const state = {
       expensesByCategory: {
-        123: expenses
+        1: expenses
       }
     };
-    const selected = getExpensesByCategory(123, state);
+    const selected = getExpensesByCategory(1, state);
     expect(selected).toBe(expenses);
   });
 });
